@@ -10,8 +10,9 @@ import learning_curve_with_pca_analysis
 import pca
 import plt_learning_curve
 
-X = pandas.read_csv('bu_data_409_419.csv', header=None).values
-y = np.vstack((np.ones((409, 1)), np.zeros((419, 1))))
+
+X = pandas.read_csv('stroop_data_698_698.csv', header=None)
+y = np.vstack((np.ones((698, 1)), np.zeros((698, 1))))
 
 X = np.nan_to_num(X)
 

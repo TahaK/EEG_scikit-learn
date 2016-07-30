@@ -19,14 +19,23 @@ def transform(X, n):
 
 def plot():
 
-    X__ = pandas.read_csv('bu_data_432_446.csv', header=None).values
-    y = np.vstack((np.ones((432, 1)), np.zeros((446, 1))))
+    X__ = pandas.read_csv('stroop_data_250_263.csv', header=None).values
+    y = np.vstack((np.ones((250, 1)), np.zeros((263, 1))))
 
     X__ = preprocessing.scale(X__)
 
     pca = PCA(n_components = 30)
     X_ = pca.fit_transform(X__)
+    labels = X_[:,0] < 0;
     plt.scatter(X_[:, 0], X_[:, 1], c=y, cmap=plt.cm.Spectral)
     plt.axis('tight')
     plt.show()
-plot()
+
+    for i in range(0,513):
+        if(labels[i] == True):
+            if(i > 249):
+                print i-250+1
+            else:
+                print i+1
+
+# plot()

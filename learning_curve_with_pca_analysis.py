@@ -4,7 +4,7 @@ import numpy as np
 
 def analyze(estimator,X_ , y, range, name=""):
 
-    X_ = pca.transform(X_, 320)
+    X_ = pca.transform(X_, 300)
 
     # from sklearn import manifold
     # tsne = manifold.TSNE(n_components=1000, init='pca', random_state=0)

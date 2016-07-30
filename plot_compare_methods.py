@@ -37,12 +37,13 @@ from sklearn import manifold, datasets
 # Next line to silence pyflakes. This import is needed.
 from sklearn.decomposition import PCA
 
+# def execut(param,figure_name):
 Axes3D
 
 n_points = 878
 # X, color = datasets.samples_generator.make_s_curve(n_points, random_state=0)
 
-X = pandas.read_csv('bu_data_250_263.csv', header=None).values[:, 0:90]
+X = pandas.read_csv('stroop_data_250_263.csv', header=None)
 color = np.vstack((np.ones((250, 1)), np.zeros((263, 1))))
 
 
@@ -51,53 +52,53 @@ color = np.vstack((np.ones((250, 1)), np.zeros((263, 1))))
 n_neighbors = 2
 n_components = 2
 
-fig = plt.figure(figsize=(15, 8))
+fig = plt.figure(figsize=(22, 5))
 plt.suptitle("Manifold Learning with %i points, %i neighbors"
              % (1000, n_neighbors), fontsize=14)
 
 try:
     # compatibility matplotlib < 1.0
-    ax = fig.add_subplot(251, projection='3d')
+    ax = fig.add_subplot(151, projection='3d')
     pca = PCA(n_components = 3)
     Y = pca.fit_transform(X)
     ax.scatter(Y[:, 0], Y[:, 1], Y[:, 2], c=color, cmap=plt.cm.Spectral)
     ax.view_init(4, -72)
 except:
-    ax = fig.add_subplot(251, projection='3d')
+    ax = fig.add_subplot(151, projection='3d')
     plt.scatter(X[:, 0], X[:, 2], c=color, cmap=plt.cm.Spectral)
 
-methods = ['standard', 'ltsa', 'hessian', 'modified']
-labels = ['LLE', 'LTSA', 'Hessian LLE', 'Modified LLE']
-
-for i, method in enumerate(methods):
-    try:
-        t0 = time()
-        Y = manifold.LocallyLinearEmbedding(n_neighbors, n_components,
-                                            eigen_solver='auto',
-                                            method=method).fit_transform(X)
-        t1 = time()
-        print("%s: %.2g sec" % (methods[i], t1 - t0))
-
-        ax = fig.add_subplot(252 + i)
-        plt.scatter(Y[:, 0], Y[:, 1], c=color, cmap=plt.cm.Spectral)
-        plt.title("%s (%.2g sec)" % (labels[i], t1 - t0))
-        ax.xaxis.set_major_formatter(NullFormatter())
-        ax.yaxis.set_major_formatter(NullFormatter())
-        plt.axis('tight')
-    except:
-        t0 = time()
-        t1 = time()
-        ax = fig.add_subplot(252 + i)
-        plt.title("%s (%.2g sec)" % (labels[i], t1 - t0))
-        ax.xaxis.set_major_formatter(NullFormatter())
-        ax.yaxis.set_major_formatter(NullFormatter())
-        plt.axis('tight')
+# methods = ['standard', 'ltsa', 'hessian', 'modified']
+# labels = ['LLE', 'LTSA', 'Hessian LLE', 'Modified LLE']
+#
+# for i, method in enumerate(methods):
+#     try:
+#         t0 = time()
+#         Y = manifold.LocallyLinearEmbedding(n_neighbors, n_components,
+#                                             eigen_solver='auto',
+#                                             method=method).fit_transform(X)
+#         t1 = time()
+#         print("%s: %.2g sec" % (methods[i], t1 - t0))
+#
+#         ax = fig.add_subplot(252 + i)
+#         plt.scatter(Y[:, 0], Y[:, 1], c=color, cmap=plt.cm.Spectral)
+#         plt.title("%s (%.2g sec)" % (labels[i], t1 - t0))
+#         ax.xaxis.set_major_formatter(NullFormatter())
+#         ax.yaxis.set_major_formatter(NullFormatter())
+#         plt.axis('tight')
+#     except:
+#         t0 = time()
+#         t1 = time()
+#         ax = fig.add_subplot(252 + i)
+#         plt.title("%s (%.2g sec)" % (labels[i], t1 - t0))
+#         ax.xaxis.set_major_formatter(NullFormatter())
+#         ax.yaxis.set_major_formatter(NullFormatter())
+#         plt.axis('tight')
 
 t0 = time()
 Y = manifold.Isomap(n_neighbors, n_components).fit_transform(X)
 t1 = time()
 print("Isomap: %.2g sec" % (t1 - t0))
-ax = fig.add_subplot(257)
+ax = fig.add_subplot(152)
 plt.scatter(Y[:, 0], Y[:, 1], c=color, cmap=plt.cm.Spectral)
 plt.title("Isomap (%.2g sec)" % (t1 - t0))
 ax.xaxis.set_major_formatter(NullFormatter())
@@ -110,7 +111,7 @@ mds = manifold.MDS(n_components, max_iter=100, n_init=1)
 Y = mds.fit_transform(X)
 t1 = time()
 print("MDS: %.2g sec" % (t1 - t0))
-ax = fig.add_subplot(258)
+ax = fig.add_subplot(153)
 plt.scatter(Y[:, 0], Y[:, 1], c=color, cmap=plt.cm.Spectral)
 plt.title("MDS (%.2g sec)" % (t1 - t0))
 ax.xaxis.set_major_formatter(NullFormatter())
@@ -124,7 +125,7 @@ se = manifold.SpectralEmbedding(n_components=n_components,
 Y = se.fit_transform(X)
 t1 = time()
 print("SpectralEmbedding: %.2g sec" % (t1 - t0))
-ax = fig.add_subplot(259)
+ax = fig.add_subplot(154)
 plt.scatter(Y[:, 0], Y[:, 1], c=color, cmap=plt.cm.Spectral)
 plt.title("SpectralEmbedding (%.2g sec)" % (t1 - t0))
 ax.xaxis.set_major_formatter(NullFormatter())
@@ -136,11 +137,10 @@ tsne = manifold.TSNE(n_components=n_components, init='pca', random_state=0)
 Y = tsne.fit_transform(X)
 t1 = time()
 print("t-SNE: %.2g sec" % (t1 - t0))
-ax = fig.add_subplot(2, 5, 10)
+ax = fig.add_subplot(1, 5, 5)
 plt.scatter(Y[:, 0], Y[:, 1], c=color, cmap=plt.cm.Spectral)
 plt.title("t-SNE (%.2g sec)" % (t1 - t0))
 ax.xaxis.set_major_formatter(NullFormatter())
 ax.yaxis.set_major_formatter(NullFormatter())
 plt.axis('tight')
-
 plt.show()
