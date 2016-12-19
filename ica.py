@@ -10,6 +10,8 @@ from sklearn.decomposition import FastICA
 
 from sklearn import svm, linear_model
 
+# Author: Mustafa Taha Kocyigit -- <mustafataha93@gmail.com>
+
 X = pd.read_csv('stroop_data_698_698.csv', header=None)
 y = np.vstack((np.ones((698, 1)), np.zeros((698, 1))))
 

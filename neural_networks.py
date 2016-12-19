@@ -5,6 +5,8 @@ import matplotlib.pyplot as plt
 
 import explore_results
 
+# Author: Mustafa Taha Kocyigit -- <mustafataha93@gmail.com>
+
 nn = Classifier(
     layers=[
         Layer("Tanh", units=100),

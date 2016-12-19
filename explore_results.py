@@ -1,6 +1,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
+# Author: Mustafa Taha Kocyigit -- <mustafataha93@gmail.com>
 
 def plot_mash(estimator, X, y, h=0.02):
 

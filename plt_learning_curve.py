@@ -2,6 +2,8 @@ import matplotlib.pyplot as plt
 from sklearn.learning_curve import learning_curve
 import numpy as np
 
+# Author: Mustafa Taha Kocyigit -- <mustafataha93@gmail.com>
+
 
 def plot_learning_curve(estimator, title, X, y, ylim=None, cv=None,
                         n_jobs=1, train_sizes=np.linspace(.1, 1.0, 5)):

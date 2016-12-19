@@ -5,6 +5,9 @@ from sklearn import preprocessing
 from sklearn.decomposition import PCA
 import matplotlib.pyplot as plt
 
+
+# Author: Mustafa Taha Kocyigit -- <mustafataha93@gmail.com>
+
 def transform(X, n):
     pca = PCA(n_components = n)
 

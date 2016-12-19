@@ -2,6 +2,8 @@ import pca
 import plt_learning_curve
 import numpy as np
 
+# Author: Mustafa Taha Kocyigit -- <mustafataha93@gmail.com>
+
 def analyze(estimator,X_ , y, range, name=""):
 
     X_ = pca.transform(X_, 300)

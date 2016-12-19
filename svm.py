@@ -12,6 +12,8 @@ import learning_curve_with_pca_analysis
 import pca
 from sklearn.utils import shuffle
 
+# Author: Mustafa Taha Kocyigit -- <mustafataha93@gmail.com>
+
 X = pandas.read_csv('stroop_data_698_698.csv', header=None).values
 y = np.vstack((np.ones((698, 1)), np.zeros((698, 1))))
 

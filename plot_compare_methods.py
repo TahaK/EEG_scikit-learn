@@ -20,6 +20,7 @@ representation of the data in the low-dimensional space.
 """
 
 # Author: Jake Vanderplas -- <vanderplas@astro.washington.edu>
+# Author: Mustafa Taha Kocyigit -- <mustafataha93@gmail.com>
 
 # print(__doc__)
 

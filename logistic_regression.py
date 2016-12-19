@@ -11,6 +11,8 @@ import explore_results
 import learning_curve_with_pca_analysis
 import pca
 
+# Author: Mustafa Taha Kocyigit -- <mustafataha93@gmail.com>
+
 X = pandas.read_csv('bu_data_432_446.csv', header=None).values
 y = np.vstack((np.ones((432, 1)), np.zeros((446, 1))))
 X = preprocessing.scale(X)

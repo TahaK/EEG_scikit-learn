@@ -5,6 +5,8 @@ import numpy as np
 import pandas
 from sklearn import preprocessing
 
+# Author: Mustafa Taha Kocyigit -- <mustafataha93@gmail.com>
+
 X = pandas.read_csv('bu_data_409_419.csv', header=None).values
 y = np.vstack((np.ones((409, 1)), np.zeros((419, 1))))
 
