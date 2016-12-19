@@ -43,8 +43,8 @@ Axes3D
 n_points = 878
 # X, color = datasets.samples_generator.make_s_curve(n_points, random_state=0)
 
-X = pandas.read_csv('stroop_data_250_263.csv', header=None)
-color = np.vstack((np.ones((250, 1)), np.zeros((263, 1))))
+X = pandas.read_csv('stroop_data_698_698.csv', header=None)#.values[:, param]
+color = np.vstack((np.ones((698, 1)), np.zeros((698, 1))))
 
 
 # X = preprocessing.scale(X)
@@ -66,33 +66,6 @@ try:
 except:
     ax = fig.add_subplot(151, projection='3d')
     plt.scatter(X[:, 0], X[:, 2], c=color, cmap=plt.cm.Spectral)
-
-# methods = ['standard', 'ltsa', 'hessian', 'modified']
-# labels = ['LLE', 'LTSA', 'Hessian LLE', 'Modified LLE']
-#
-# for i, method in enumerate(methods):
-#     try:
-#         t0 = time()
-#         Y = manifold.LocallyLinearEmbedding(n_neighbors, n_components,
-#                                             eigen_solver='auto',
-#                                             method=method).fit_transform(X)
-#         t1 = time()
-#         print("%s: %.2g sec" % (methods[i], t1 - t0))
-#
-#         ax = fig.add_subplot(252 + i)
-#         plt.scatter(Y[:, 0], Y[:, 1], c=color, cmap=plt.cm.Spectral)
-#         plt.title("%s (%.2g sec)" % (labels[i], t1 - t0))
-#         ax.xaxis.set_major_formatter(NullFormatter())
-#         ax.yaxis.set_major_formatter(NullFormatter())
-#         plt.axis('tight')
-#     except:
-#         t0 = time()
-#         t1 = time()
-#         ax = fig.add_subplot(252 + i)
-#         plt.title("%s (%.2g sec)" % (labels[i], t1 - t0))
-#         ax.xaxis.set_major_formatter(NullFormatter())
-#         ax.yaxis.set_major_formatter(NullFormatter())
-#         plt.axis('tight')
 
 t0 = time()
 Y = manifold.Isomap(n_neighbors, n_components).fit_transform(X)
